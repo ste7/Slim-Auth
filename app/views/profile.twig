@@ -1,0 +1,78 @@
+{% extends 'templates/defaults.twig' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-sm-5">
+
+            <h4>Update profile</h4>
+            <hr>
+
+            <form method="post">
+
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Username" name="username" value="{{ username }}" disabled>
+                    {% if error.username %}
+                        <span class="help-block">{{ error.username }}</span>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="first_name">First name:</label>
+                    <input type="text" class="form-control" id="first_name" name="first_name" value="{{ first_name }}">
+                    {% if error.first_name %}
+                        <span class="help-block">{{ error.first_name }}</span>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="last_name">Last name</label>
+                    <input type="text" class="form-control" id="last_name" name="last_name" value="{{ last_name }}">
+                    {% if error.last_name %}
+                        <span class="help-block">{{ error.last_name | first }}</span>
+                    {% endif %}
+                </div>
+
+                <input type="hidden" name="csrf_name" value="{{ csrf.name }}">
+                <input type="hidden" name="csrf_value" value="{{ csrf.value }}">
+
+                <button type="submit" class="btn btn-default" name="update-profile">Save</button>
+            </form>
+        </div>
+
+
+
+        <div class="col-sm-5 col-sm-offset-2">
+
+            <h4>Change password</h4>
+            <hr>
+
+            <form method="post">
+
+                <div class="form-group">
+                    <label for="old_password">Old password:</label>
+                    <input type="password" class="form-control" id="old_password" placeholder="Old password" name="old_password">
+                    {% if error.old_password %}
+                        <span class="help-block">{{ error.old_password | first }}</span>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="new_password">New password:</label>
+                    <input type="password" class="form-control" id="new_password" placeholder="New password" name="new_password">
+                    {% if error.new_password %}
+                        <span class="help-block">{{ error.new_password | first }}</span>
+                    {% endif %}
+                </div>
+
+                <input type="hidden" name="csrf_name" value="{{ csrf.name }}">
+                <input type="hidden" name="csrf_value" value="{{ csrf.value }}">
+
+                <button type="submit" class="btn btn-default" name="update-password">Save</button>
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}

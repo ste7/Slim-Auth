@@ -1,0 +1,52 @@
+{% extends 'templates/defaults.twig' %}
+
+{% block content %}
+    <form method="post">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Username" name="username">
+                {% if error.username %}
+                    <span class="help-block">{{ error.username | first }}</span>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                {% if error.password %}
+                    <span class="help-block">{{ error.password | first }}</span>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="firtst_name">First name</label>
+                <input type="text" class="form-control" id="first_name" placeholder="First name" name="first_name">
+                {% if error.first_name %}
+                    <span class="help-block">{{ error.first_name | first }}</span>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="last_name">Last name</label>
+                <input type="text" class="form-control" id="last_name" placeholder="Last name" name="last_name">
+                {% if error.last_name %}
+                    <span class="help-block">{{ error.last_name | first }}</span>
+                {% endif %}
+            </div>
+
+            <input type="hidden" name="csrf_name" value="{{ csrf.name }}">
+            <input type="hidden" name="csrf_value" value="{{ csrf.value }}">
+
+            <button type="submit" class="btn btn-default">Sign Up</button>
+        </div>
+    </form>
+
+    {% if username %}
+
+        {{ username }}
+
+    {% endif %}
+
+
+{% endblock %}
